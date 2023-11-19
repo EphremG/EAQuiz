@@ -19,7 +19,7 @@
     <!-- Header Section -->
     <header class="bg-primary text-white text-center p-4">
         <h1>
-            eaQuiz
+            EAquiz
         </h1>
         <p>
             Challenge your audience with quizzes!
@@ -35,8 +35,9 @@
                 
                 <form id="createKahootForm" action="/addQuestion" method="post">
                     <h3>
-                        Question 1
+                        Question
                     </h3>
+                    <%=  %>
                     <br>
                     <div class="form-group">
                         <input class="form-control" name="qn" id="quizName" placeholder="First Question" required=""
@@ -69,13 +70,33 @@
                     </button>
                 </form>
                 <br>
-                <button class="btn btn-primary" type="submit">
-                    Add More Question
-                </button>
+                <form action="/joinhost" method="post">
+                    <button class="btn btn-info" type="submit">
+                        Continue
+                    </button>
+                </form>
             </div>
            
         </div>
     </section>
+   <% if(display == true) {%>
+    <section>
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr;  border: 1px solid black; padding: 20px; margin: 10px;">
+            <% for(let val of questions) { %>
+                <div style="border: 1px solid black; padding: 10px; margin: 10px;">
+                    <b>Question</b> <%=  val.Question %> <br>
+                    <span style="color: red; width:100px">A. <%=  val.Option1 %></span><br>
+                    <span style="color: green;">B. <%=  val.Option2 %></span><br>
+                    <span style="color: blue;">C. <%=  val.Option3 %></span><br>
+                    <span style="color: purple;">D. <%=  val.Option4 %></span><br><br>
+                </div>
+            <%  }  %>
+        </div>
+    </section>
+    <% } %>
+    
+    
+
     <!-- Bootstrap & jQuery JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
